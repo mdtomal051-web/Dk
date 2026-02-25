@@ -1,0 +1,403 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+ </head>
+ <body>
+  <!-- Obfuscated at 2025-12-07 17:34:31 on https://t.me/LegendVai91 (Powered By Mr.BaBlU) -->
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>
+   TG Boy VĪP
+  </title>
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+   body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+        font-family: 'Arial', sans-serif;
+    }
+
+    iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    #predictionBox {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: rgba(10, 10, 25, 0.85);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        
+        padding: 15px 18px;
+        border-radius: 15px;
+        color: #fff;
+        font-size: 15px;
+        font-weight: bold;
+        width: 190px;
+        text-align: center;
+        border: 1px solid rgba(0, 255, 255, 0.5); /* Cyan Border */
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.4), 
+                    0 0 20px rgba(0, 255, 255, 0.2), /* Cyan Glow */
+                    inset 0 0 10px rgba(0, 255, 255, 0.05);
+        z-index: 99999;
+        cursor: grab;
+        user-select: none;
+        transition: all 0.5s ease;
+        font-family: 'Orbitron', sans-serif;
+    }
+    
+    #vipTitle {
+        font-size: 16px;
+        font-weight: 900;
+        margin-bottom: 8px;
+        color: #ffffff; /* White Title */
+        text-shadow: 0 0 8px #00ffff, 0 0 12px #00ffff; /* Cyan Glow */
+        letter-spacing: 1px;
+        animation: pulse 2.5s infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.8; transform: scale(1.02); }
+    }
+
+    #bsText {
+        font-size: 30px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        transition: color 0.8s ease, text-shadow 0.8s ease, filter 0.8s ease;
+        filter: drop-shadow(0 0 10px currentColor);
+        animation: flicker 3s infinite alternate;
+        margin-bottom: 8px;
+    }
+
+    @keyframes flicker {
+        0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+        20%, 24%, 55% { opacity: 0.8; }
+    }
+
+    .bd-time, .timer { 
+        font-size: 12px;
+        color: #00ffff; /* Cyan Time/Timer */
+        opacity: 0.9; 
+        font-weight: 700;
+        text-shadow: 0 0 4px #00ffff;
+    }
+    
+    .bd-time {
+        margin-top: 0;
+    }
+
+    .timer {
+        margin-top: 4px;
+    }
+
+    #loginForm input {
+        width: 90%;
+        padding: 8px;
+        border-radius: 8px;
+        border: 1px solid rgba(0, 255, 255, 0.5); /* Cyan Border */
+        margin-bottom: 10px;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        font-family: 'Orbitron', sans-serif;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+    }
+    
+    #loginForm input:focus {
+        outline: none;
+        border-color: #00ffff;
+        box-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+    }
+
+    #loginForm button {
+        width: 90%;
+        padding: 8px;
+        border-radius: 8px;
+        border: none;
+        background: linear-gradient(45deg, #00ffff, #0080ff); /* Cyan Gradient */
+        color: #0a0a0a;
+        font-weight: bold;
+        cursor: pointer;
+        font-family: 'Orbitron', sans-serif;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px 0 rgba(0, 255, 255, 0.4);
+        box-sizing: border-box;
+    }
+    
+    #loginForm button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px 0 rgba(0, 255, 255, 0.6);
+    }
+
+    #toast {
+        position: fixed;
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(10, 10, 25, 0.9);
+        color: #fff;
+        padding: 12px 24px;
+        border-radius: 10px;
+        border: 1px solid rgba(0, 255, 255, 0.4);
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        font-weight: bold;
+        display: none;
+        z-index: 100000;
+        opacity: 0.95;
+        font-family: 'Orbitron', sans-serif;
+        backdrop-filter: blur(5px);
+    }
+
+    #toast.success { background: linear-gradient(45deg, #00ffff, #00ff7f); color: #000; }
+    #toast.error { background: linear-gradient(45deg, #ff007f, #ff4500); color: #fff; }
+    
+    .loading-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(10, 10, 25, 0.9);
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
+        backdrop-filter: blur(2px);
+    }
+    
+    .loading-spinner {
+        width: 35px;
+        height: 35px;
+        border: 3px solid rgba(0, 255, 255, 0.2); /* Cyan Spinner */
+        border-top: 3px solid #00ffff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  </style>
+  <iframe src="https://dkwin9.com/#/register?invitationCode=538261404782">
+  </iframe>
+  <div id="predictionBox">
+   <div id="loginForm">
+    <input id="passwordInput" placeholder="Enter Password" type="password">
+    <br>
+    <button id="loginBtn">
+     Login
+    </button>
+   </div>
+   <div id="predictionUI" style="display:none;">
+    <div id="vipTitle">
+     TG Boy VĪP
+    </div>
+    <div id="bsText">
+     BIG
+    </div>
+    <div class="bd-time" id="bdTime">
+     --:--:--
+    </div>
+    <div class="timer" id="timer">
+     Next: 00:00
+    </div>
+    <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+     <div class="loading-spinner">
+     </div>
+    </div>
+   </div>
+  </div>
+  <div id="toast">
+  </div>
+  <script>
+   /* ================= GLOBAL STATE ================= */
+let currentPrediction = "BIG";
+let currentColor = { color: '#00ffff', shadow: '0 0 20px #00ffff' }; // Default color is now cyan
+let timerInterval;
+let lastSecond = -1;
+
+/* ================= COLOR PALETTES (Updated for a new beautiful look) ================= */
+const bigColors = [
+    { color: '#00ffff', shadow: '0 0 20px #00ffff' }, // Cyan
+    { color: '#00bfff', shadow: '0 0 20px #00bfff' }, // Deep Sky Blue
+    { color: '#39ff14', shadow: '0 0 20px #39ff14' }, // Neon Green
+    { color: '#bf00ff', shadow: '0 0 20px #bf00ff' }, // Violet
+    { color: '#ffffff', shadow: '0 0 20px #ffffff' }  // White
+];
+
+const smallColors = [
+    { color: '#ff00ff', shadow: '0 0 20px #ff00ff' }, // Magenta
+    { color: '#ff4500', shadow: '0 0 20px #ff4500' }, // Orange Red
+    { color: '#ffd700', shadow: '0 0 20px #ffd700' }, // Gold
+    { color: '#ff69b4', shadow: '0 0 20px #ff69b4' }, // Hot Pink
+    { color: '#00ff7f', shadow: '0 0 20px #00ff7f' }  // Spring Green
+];
+
+/* ================= PREDICTION GENERATOR ================= */
+function generatePrediction() {
+    const isBig = Math.random() < 0.5;
+    const prediction = isBig ? "BIG" : "SMALL";
+    
+    const palette = isBig ? bigColors : smallColors;
+    const color = palette[Math.floor(Math.random() * palette.length)];
+    
+    return { prediction, color };
+}
+
+/* ================== BANGLADESH TIME FORMATTER ================== */
+function getBDTime() {
+    const now = new Date();
+    const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+    const bdTime = new Date(utc + (6 * 3600000)); // 6 hours offset for BST
+
+    const hours = String(bdTime.getHours()).padStart(2, '0');
+    const minutes = String(bdTime.getMinutes()).padStart(2, '0');
+    const seconds = String(bdTime.getSeconds()).padStart(2, '0');
+
+    return `${hours}:${minutes}:${seconds}`;
+}
+
+/* ================== INITIALIZATION ================== */
+function initializePrediction() {
+    showLoadingAnimation(true);
+    
+    const { prediction, color } = generatePrediction();
+    currentPrediction = prediction;
+    currentColor = color;
+
+    updateUI();
+    showToast("System Initialized!", "success");
+    showLoadingAnimation(false);
+}
+
+/* ================== UI UPDATES ================== */
+function updateUI() {
+    const bsElement = document.getElementById("bsText");
+    bsElement.innerText = currentPrediction;
+    bsElement.style.color = currentColor.color;
+    bsElement.style.textShadow = currentColor.shadow;
+}
+
+function showLoadingAnimation(show) {
+    document.getElementById("loadingOverlay").style.display = show ? "flex" : "none";
+}
+
+/* ================== TIMER AND CYCLE LOGIC ================== */
+function updateTimer() {
+    // Update Bangladesh Time
+    document.getElementById("bdTime").innerText = getBDTime();
+
+    // Update Market Timer
+    const now = new Date();
+    const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+    const bdTime = new Date(utc + (6 * 3600000));
+    
+    const seconds = bdTime.getSeconds();
+    const remainingSeconds = 30 - (seconds % 30);
+    document.getElementById("timer").innerText = `Next: 00:${String(remainingSeconds).padStart(2,'0')}`;
+
+    // Check for new period to change prediction
+    if (seconds % 30 === 0 && seconds !== lastSecond) {
+        lastSecond = seconds;
+        showLoadingAnimation(true);
+        
+        const { prediction, color } = generatePrediction();
+        currentPrediction = prediction;
+        currentColor = color;
+        
+        updateUI();
+        
+        setTimeout(() => {
+            showLoadingAnimation(false);
+        }, 800);
+    } else if (seconds !== lastSecond) {
+        lastSecond = seconds;
+    }
+}
+
+/* ================== TOAST ================== */
+function showToast(message, type) {
+    const toast = document.getElementById("toast");
+    toast.innerText = message;
+    toast.className = type;
+    toast.style.display = "block";
+    setTimeout(() => toast.style.display = "none", 3000);
+}
+
+/* ================== LOGIN ================== */
+const loginBtn = document.getElementById("loginBtn");
+const passwordInput = document.getElementById("passwordInput");
+const loginForm = document.getElementById("loginForm");
+const predictionUI = document.getElementById("predictionUI");
+const predictionBox = document.getElementById("predictionBox");
+
+loginBtn.addEventListener("click", async () => {
+    if(passwordInput.value === "@#"){
+        showToast("Login Successful!", "success");
+        loginForm.style.display = "none";
+        predictionUI.style.display = "block";
+
+        initializePrediction();
+
+        if (timerInterval) clearInterval(timerInterval);
+        timerInterval = setInterval(updateTimer, 200);
+
+    } else {
+        // Show error message
+        showToast("Invalid Password!", "error");
+        passwordInput.value = "";
+        
+        // Redirect to Telegram channel after a short delay
+        setTimeout(() => {
+            window.location.href = "https://t.me/tkclubhack1";
+        }, 1000);
+    }
+});
+
+/* ================== DRAGGABLE BOX ================== */
+let drag = false, dx = 0, dy = 0;
+
+predictionBox.addEventListener("mousedown", e => {
+    drag = true;
+    dx = e.clientX - predictionBox.offsetLeft;
+    dy = e.clientY - predictionBox.offsetTop;
+});
+document.addEventListener("mousemove", e => {
+    if (!drag) return;
+    predictionBox.style.left = e.clientX - dx + "px";
+    predictionBox.style.top = e.clientY - dy + "px";
+    predictionBox.style.bottom = "auto";
+    predictionBox.style.right = "auto";
+});
+document.addEventListener("mouseup", () => drag = false);
+
+predictionBox.addEventListener("touchstart", e => {
+    drag = true;
+    let t = e.touches[0];
+    dx = t.clientX - predictionBox.offsetLeft;
+    dy = t.clientY - predictionBox.offsetTop;
+});
+document.addEventListener("touchmove", e => {
+    if (!drag) return;
+    let t = e.touches[0];
+    predictionBox.style.left = t.clientX - dx + "px";
+    predictionBox.style.top = t.clientY - dy + "px";
+    predictionBox.style.bottom = "auto";
+    predictionBox.style.right = "auto";
+});
+document.addEventListener("touchend", () => drag = false);
+  </script>
+ 
+
+</body></html>
